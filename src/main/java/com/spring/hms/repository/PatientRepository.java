@@ -51,4 +51,13 @@ public class PatientRepository {
 		 return list.get(0);
 	}
 
+	public int getIdByUsername(String username) {
+		String sql="select p.id from patient p "
+				+ "	JOIN user u ON p.user_id = u.id "
+				+ "	where u.username=?";
+		Object[] obj= new Object[] {username};
+		int pid = jdbcTemplate.queryForObject(sql, Integer.class, obj);
+		return pid;
+	}
+
 }

@@ -61,6 +61,16 @@ public class PatientController {
 		return "redirect:/patientDashboard";
 		
 	}
+	@GetMapping("/book-appointment")
+	public String bookAppointment(HttpServletRequest req,HttpSession session) {
+		String username=(String)session.getAttribute("username");
+		String appointment_date=req.getParameter("appointment_date");
+		int doctor_id=Integer.parseInt(req.getParameter("doctorId"));
+		appointmentService.bookAppointment(username,appointment_date,doctor_id);
+		req.setAttribute("appointment_date", appointment_date);
+		req.setAttribute("doctorId", doctor_id);
+		return "appointment_confirm";
+	}
 	
 	
 }

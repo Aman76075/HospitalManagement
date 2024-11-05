@@ -74,6 +74,29 @@ public class AppointmentRepository {
 		jdbc.update(psc);
 		
 	}
+
+	public void bookAppointment(int pid, String appointment_date, int doctor_id) {
+		String sql="insert into appointment values(?,?,?,?,?)";
+		String status="booked";
+		int id = (int) (Math.random() * 10000000);
+		PreparedStatementCreator psc=new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt =   con.prepareStatement(sql);
+				pstmt.setInt(1,id);
+				pstmt.setInt(2, pid);
+				pstmt.setInt(3,doctor_id);
+				pstmt.setString(4, appointment_date);
+				pstmt.setString(5, status);
+				return pstmt;
+				
+			}
+		};
+		jdbc.update(psc);
+		
+		
+	}
 	
 
 }

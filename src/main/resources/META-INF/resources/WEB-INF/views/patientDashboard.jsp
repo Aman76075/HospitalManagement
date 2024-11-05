@@ -24,7 +24,7 @@
 							<h1 class="display-6">Book Appointment</h1>
 							<hr>
 							<div class="card-body">
-													<form method="get" action="/patientDashboard"> 						
+													<form method="get" action="/book-appointment"> 						
 													<label>Enter Doctor ID: </label>
 													<input type="text" name="doctorId" class="form-control">
 													 
